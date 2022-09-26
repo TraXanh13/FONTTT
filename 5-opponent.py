@@ -1,11 +1,9 @@
 import pygame
 import sys
 
-
-
 def ball_animation():
 
-  global ball_speed_x, ball_speed_y
+  global ball_speed_x, ball_speed_y, bounceCounter
 
   ball.x += ball_speed_x
   ball.y += ball_speed_y
@@ -16,6 +14,7 @@ def ball_animation():
 
   if ball.left <= 0 or ball.right >= screen_width:
     ball_speed_x *= -1
+    bounceCounter += 1
 
 
 def player_animation():
@@ -71,6 +70,7 @@ ball_speed_x = 7
 ball_speed_y = 7
 player_speed = 0
 opponent_speed = 7
+bounceCounter = 0
 
 
 # Game Loop
@@ -102,6 +102,12 @@ while True:
     pygame.draw.ellipse(screen, light_grey, ball)
     pygame.draw.aaline(screen, light_grey, (screen_width/2,
                                             0), (screen_width/2, screen_height))
+    
+    if (bounceCounter % 5 == 0 and bounceCounter != 0):
+      player = pygame.Rect.inflate(player, 0, -10)
+      opponent = pygame.Rect.inflate(opponent, 0, -10)
+      bounceCounter += 1
+      
 
     pygame.display.flip()
     clock.tick(60)
