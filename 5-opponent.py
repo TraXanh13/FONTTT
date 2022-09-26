@@ -104,8 +104,8 @@ while True:
                                             0), (screen_width/2, screen_height))
     
     if (bounceCounter % 5 == 0 and bounceCounter != 0):
-      player = pygame.Rect.inflate(player, 0, -10)
-      opponent = pygame.Rect.inflate(opponent, 0, -10)
+      player = pygame.Rect.inflate(player, 0, -20)
+      opponent = pygame.Rect.inflate(opponent, 0, -20)
       bounceCounter += 1
       
 
