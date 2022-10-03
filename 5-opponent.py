@@ -106,6 +106,8 @@ while True:
     if (bounceCounter % 5 == 0 and bounceCounter != 0):
       player = pygame.Rect.inflate(player, 0, -20)
       opponent = pygame.Rect.inflate(opponent, 0, -20)
+      ball = pygame.Rect.inflate(ball, 7, 7)
+      ball.x += ball_speed_x
       bounceCounter += 1
       
 
