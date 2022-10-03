@@ -1,6 +1,3 @@
-import imp
-
-
 import pygame
 
 # Sound Variables
