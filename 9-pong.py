@@ -1,7 +1,9 @@
 import pygame
 import random
 import sys
+import score
 import sounds
+
 # GLOBAL VARIABLES
 
 pygame.init()
@@ -29,11 +31,6 @@ ball_speed_y = 7
 player_speed = 0
 opponent_speed = 3
 
-# Score Text
-player_score = 0
-opponent_score = 0
-basic_font = pygame.font.Font('freesansbold.ttf', 32)
-
 # Sound Variables
 pong_sound = pygame.mixer.Sound("./media/pong.ogg")
 score_sound = pygame.mixer.Sound("./media/score.ogg")
@@ -55,14 +52,14 @@ def ball_animation():
 
   # Ball Collision Left
   if ball.left <= 0:
+    score.increase_player_score()
     sounds.scoreSound()
-    player_score += 1
     ball_restart()
 
   # Ball Collision Right
   if ball.right >= screen_width:
+    score.increase_opponent_score()
     sounds.scoreSound()
-    opponent_score += 1
     ball_restart()
 
 
@@ -149,11 +146,7 @@ if __name__ == "__main__":
 
 
       # Create a surface for the scores
-      player_text = basic_font.render(f"{player_score}", False, light_grey)
-      screen.blit(player_text, (660,470))
-
-      opponent_text = basic_font.render(f"{opponent_score}", False, light_grey)
-      screen.blit(opponent_text, (600,470))
+      score.draw_scores(screen)
 
 
       pygame.display.flip()
