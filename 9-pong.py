@@ -3,6 +3,7 @@ import random
 import sys
 import score
 import sounds
+import itemBox
 
 # GLOBAL VARIABLES
 
@@ -138,6 +139,7 @@ if __name__ == "__main__":
       opponent_ai()
 
       screen.fill(bg_color)
+      pygame.draw.rect(screen, light_grey, itemBox.spawn_box(pygame.time.get_ticks()))
       pygame.draw.rect(screen, light_grey, player)
       pygame.draw.rect(screen, light_grey, opponent)
       pygame.draw.ellipse(screen, light_grey, ball)
