@@ -12,10 +12,14 @@ class Player(character.Character):
 
     def moveUp(self):
         self.character.y -= self.speed
-        if (self.character.top <= 0):
-            self.character.y = 0
+        self.checkInbounds()
 
     def moveDown(self):
         self.character.y += self.speed
+        self.checkInbounds()
+
+    def checkInbounds(self):
+        if (self.character.top <= 0):
+            self.character.y = 0
         if (self.character.bottom > self.screen.get_height()):
             self.character.bottom = self.screen.get_height()
