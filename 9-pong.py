@@ -34,6 +34,11 @@ def playerMovement():
             player.moveDown()
         if event.key == pygame.K_UP:
             player.moveUp()
+        if event.key == pygame.K_q:
+            ball.resetBall()
+        if event.key == pygame.K_ESCAPE:
+            pygame.quit()
+            sys.exit()
     return
 
 
@@ -53,7 +58,8 @@ if __name__ == "__main__":
         player.drawCharacter()
         op.drawCharacter()
         ball.drawBall()
-        pygame.draw.rect(screen, (255, 255, 255), itemBox.spawnBox(pygame.time.get_ticks()))
+        pygame.draw.rect(screen, (255, 255, 255),
+                         itemBox.spawnBox(pygame.time.get_ticks()))
 
         # Update scores
         score.draw_scores(screen, screenWidth, screenHeight)
