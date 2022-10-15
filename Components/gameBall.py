@@ -15,6 +15,7 @@ class GameBall(ball.Ball):
                                 screen.get_height()/2-15, 30, 30)
         self.ballSpeedX = 7
         self.ballSpeedY = 7
+        self.defaultSpeed = 7
         self.maxX = screen.get_width()
         self.maxY = screen.get_height()
         self.screen = screen
@@ -28,16 +29,8 @@ class GameBall(ball.Ball):
     def resetBall(self):
         self.ball.x = self.maxX/2-15
         self.ball.y = self.maxY/2-15
-        self.ballSpeedX *= random.choice((1.25, 1, 0.75, -0.75, - 1, -1.25))
-        self.ballSpeedY *= random.choice((1.25, 1, 0.75, -0.75, -1, -1.25))
-
-    def changeBallSpeed(self, speed):
-        if (self.getBallDirection):
-            self.ballSpeedX = speed + random.randint(0, 3)
-            self.ballSpeedY = speed + random.randint(0, 3)
-        else:
-            self.ballSpeedX = speed + random.randint(-3, 0)
-            self.ballSpeedY = speed + random.randint(-3, 0)
+        self.ballSpeedX = self.defaultSpeed * random.choice((1, -1))
+        self.ballSpeedY = self.defaultSpeed * random.choice((1, -1))
 
     # Overrides the parent ball method
     def moveBall(self, player, opponent, itemBox, score):

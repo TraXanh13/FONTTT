@@ -1,5 +1,3 @@
-import pygame
-
 def inverseControls(player, *_):
     player.changeSpeed(-player.speed)
 
@@ -15,7 +13,7 @@ def growPaddle(player, op, ball):
     if (not ball.getBallDirection() and player.getHeight() < 300):
         player.changeHeight(player.getHeight() * 1.25)
     elif (ball.getBallDirection() and op.getHeight() < 300):
-        op.changeHeight(player.getHeight() * 1.25)
+        op.changeHeight(op.getHeight() * 1.25)
 
 
 def slowMotion(player, op, ball):
@@ -33,7 +31,8 @@ def speedUp(player, op, ball):
 
 
 def fastBall(player, op, ball):
-    if (ball.getBallDirection()):
-        ball.changeSpeed(ball.getSpeed() * 1.15)
+    if (ball.getBallDirection() and ball.getSpeedX() < 15 and ball.getSpeedY() < 15):
+        ball.changeBallSpeed(ball.getSpeedX() * 1.15, ball.getSpeedY() * 1.15)
     else:
-        ball.changeSpeed(ball.getSpeed() * -1.15)
+        ball.changeBallSpeed(ball.getSpeedX() * -1.15,
+                             ball.getSpeedY() * -1.15)
