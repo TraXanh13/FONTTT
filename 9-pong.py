@@ -1,15 +1,19 @@
+from asyncio.windows_events import NULL
 import pygame
 import sys
 import Components.score as score
 import Components.itemBox as itemBox
+import Components.multiplayer as multiplayer
 from Components.player import Player
 from Components.opponent import Opponent
 from Components.gameBall import GameBall
+
 
 # General setup
 pygame.init()
 clock = pygame.time.Clock()
 pygame.font.init()
+
 
 # colors
 bgColor = pygame.Color('grey12')
@@ -22,12 +26,15 @@ screen = pygame.display.set_mode((screenWidth, screenHeight))
 pygame.display.set_caption('Pong')
 
 # Initialize classes
-player = Player(screen)
+player = Player(screen, pygame.Rect(screen.get_width()-20, screen.get_height()/2-70, 10, 140))
+#set to null after
 op = Opponent(screen)
+#op = NULL
 ball = GameBall(screen)
+player_two = NULL 
 
 
-def playerMovement():
+def  playerMovement():
     # Controlled with the up and down arrow keys
     if event.type == pygame.KEYDOWN:
         if event.key == pygame.K_DOWN:
@@ -41,6 +48,11 @@ def playerMovement():
             sys.exit()
     return
 
+multiplayer.init(screen)
+if(multiplayer.isMultiplayerSelected()):
+    player_two = multiplayer.getPlayerTwo()
+else:
+    op = multiplayer.getOp()    
 
 if __name__ == "__main__":
     # Game loop
@@ -56,7 +68,10 @@ if __name__ == "__main__":
         pygame.draw.aaline(screen, lightGrey, (screenWidth/2,
                            0), (screenWidth/2, screenHeight))
         player.drawCharacter()
-        op.drawCharacter()
+        if (not multiplayer.isMultiplayerSelected()):
+            op.drawCharacter()
+        else:
+            player_two.drawCharacter()
         ball.drawBall()
         pygame.draw.rect(screen, (255, 255, 255),
                          itemBox.spawnBox(pygame.time.get_ticks()))
@@ -66,8 +81,12 @@ if __name__ == "__main__":
 
         # Move objects
         playerMovement()
-        ball.moveBall(player, op, itemBox, score)
-        op.moveOpponent(ball.getBall())
+        if(multiplayer.isMultiplayerSelected()):
+            multiplayer.secondPlayerMovement()
+            ball.moveBall(player, player_two, itemBox, score)
+        else: 
+            ball.moveBall(player, op, itemBox, score)
+            op.moveOpponent(ball.getBall())
 
         # updating the window
         pygame.display.flip()

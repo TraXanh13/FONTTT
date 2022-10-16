@@ -3,6 +3,7 @@ import random
 import mods
 import Components.ball as ball
 import Components.sounds as sounds
+import Components.multiplayer as multiplayer
 # import Components.itemBox as itemBox
 
 modList = [mods.inverseControls, mods.shrinkPaddle,
@@ -54,7 +55,10 @@ class GameBall(ball.Ball):
             sounds.playScoreSound()
             self.resetBall()
             player.resetCharacter()
-            opponent.resetCharacter()
+            if (multiplayer.isMultiplayerSelected()):
+                multiplayer.getPlayerTwo().resetCharacter()
+            else:
+                opponent.resetCharacter()
             score.increase_opponent_score()
 
         # Bounce off player
