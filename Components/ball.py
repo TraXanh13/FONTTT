@@ -15,7 +15,22 @@ class Ball:
             self.ballSpeedY = speedY + random.randint(-3, 0)
 
     def drawBall(self):
-        pygame.draw.ellipse(self.screen, self.color, self.ball)
+        BLUE = (0, 0, 255)
+        YELLOW = (255, 255, 0)
+        ORANGE = (255, 165, 0)
+        RED = (255, 0, 0)
+        
+        # Ball changes color depending on speed
+        if(self.getSpeedX() < 7 and self.getSpeedX() > -7):
+            pygame.draw.ellipse(self.screen, BLUE, self.ball)
+        elif(self.getSpeedX() == 7 or self.getSpeedX() == -7):
+            pygame.draw.ellipse(self.screen, self.color, self.ball)
+        elif(( self.getSpeedX() > -10 and self.getSpeedX() < -7) or (self.getSpeedX() < 10 and self.getSpeedX() > 7)):
+            pygame.draw.ellipse(self.screen, YELLOW, self.ball)
+        elif((self.getSpeedX() >= -12.5 and self.getSpeedX() <= -10) or (self.getSpeedX() <= 12.5 and self.getSpeedX() >= 10)):    
+            pygame.draw.ellipse(self.screen, ORANGE, self.ball)
+        else:
+            pygame.draw.ellipse(self.screen, RED, self.ball)
 
     def moveBall(self):
         self.ball.x += self.ballSpeedX
