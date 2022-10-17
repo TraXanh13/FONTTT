@@ -17,9 +17,9 @@ def shrinkPaddle(player, op, ball):
 def growPaddle(player, op, ball):
     sounds.playGrowSound()
     if (not ball.getBallDirection() and player.getHeight() < 200):
-        player.changeHeight(player.getHeight() * 1.15)
+        player.changeHeight(player.getHeight() * .15)
     elif (ball.getBallDirection() and op.getHeight() < 200):
-        op.changeHeight(op.getHeight() * 1.15)
+        op.changeHeight(op.getHeight() * .15)
 
 
 def slowMotion(player, op, ball):
@@ -40,8 +40,6 @@ def speedUp(player, op, ball):
 
 def fastBall(player, op, ball):
     sounds.playFastBallSound()
-    if (ball.getBallDirection() and ball.getSpeedX() < 15 and ball.getSpeedY() < 15):
-        ball.changeBallSpeed(ball.getSpeedX() * 1.15, ball.getSpeedY() * 1.15)
-    else:
-        ball.changeBallSpeed(ball.getSpeedX() * -1.15,
-                             ball.getSpeedY() * -1.15)
+    if (ball.getSpeedX() < 15 and ball.getSpeedY() < 15):
+        ball.changeBallSpeed(ball.getSpeedX() * 1.15,
+                             ball.getSpeedY() * 1.15)
