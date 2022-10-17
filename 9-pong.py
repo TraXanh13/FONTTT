@@ -28,8 +28,8 @@ pygame.display.set_caption('Pong')
 # Initialize classes
 player = Player(screen, pygame.Rect(screen.get_width()-20, screen.get_height()/2-70, 10, 140))
 #set to null after
-op = Opponent(screen)
-#op = NULL
+#op = Opponent(screen)
+op = NULL
 ball = GameBall(screen)
 player_two = NULL 
 
