@@ -7,8 +7,16 @@ class Character:
         return self.character
 
     def drawCharacter(self, string):
-        if(score.opponent_scored == True and string == 'p'):
-            pygame.draw.rect(self.screen, (40, 40, 40), self.character)
+        if(score.opponent_scored == True):
+            if(string == 'p'):
+                pygame.draw.rect(self.screen, (40, 40, 40), self.character)
+            else:
+                pygame.draw.rect(self.screen, (200, 200, 200), self.character)
+        elif(score.player_scored == True):
+            if(string == 'op'):
+                pygame.draw.rect(self.screen, (40, 40, 40), self.character)
+            else:
+                pygame.draw.rect(self.screen, (200, 200, 200), self.character)
         else:
             pygame.draw.rect(self.screen, (200, 200, 200), self.character)
             
