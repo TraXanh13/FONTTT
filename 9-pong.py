@@ -55,8 +55,8 @@ if __name__ == "__main__":
         screen.fill(bgColor)
         pygame.draw.aaline(screen, lightGrey, (screenWidth/2,
                            0), (screenWidth/2, screenHeight))
-        player.drawCharacter()
-        op.drawCharacter()
+        player.drawCharacter("p")
+        op.drawCharacter("op")
         ball.drawBall()
         pygame.draw.rect(screen, (255, 255, 255),
                          itemBox.spawnBox(pygame.time.get_ticks()))

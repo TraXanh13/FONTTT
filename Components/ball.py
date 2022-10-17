@@ -1,10 +1,11 @@
 import pygame
 import random
-
+import Components.score as score
 
 class Ball:
     def getBall(self):
         return self.ball
+    
 
     def changeBallSpeed(self, speedX, speedY):
         if (self.getBallDirection):
@@ -13,12 +14,15 @@ class Ball:
         else:
             self.ballSpeedX = speedX + random.randint(-3, 0)
             self.ballSpeedY = speedY + random.randint(-3, 0)
+    
 
     def drawBall(self):
         BLUE = (0, 0, 255)
         YELLOW = (255, 255, 0)
         ORANGE = (255, 165, 0)
         RED = (255, 0, 0)
+    
+        
         
         # Ball changes color depending on speed
         if(self.getSpeedX() < 7 and self.getSpeedX() > -7):

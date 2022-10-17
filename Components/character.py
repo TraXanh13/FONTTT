@@ -1,14 +1,17 @@
 import pygame
-
+import Components.score as score
 
 class Character:
 
     def getCharacter(self):
         return self.character
 
-    def drawCharacter(self):
-        pygame.draw.rect(self.screen, (200, 200, 200), self.character)
-
+    def drawCharacter(self, string):
+        if(score.opponent_score % 2 != 0 and string is 'p'):
+            pygame.draw.rect(self.screen, (40, 40, 40), self.character)
+        else:
+            pygame.draw.rect(self.screen, (200, 200, 200), self.character)
+            
     def resetSpeed(self):
         self.speed = self.defaultSpeed
 
