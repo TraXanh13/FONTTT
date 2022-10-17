@@ -5,6 +5,7 @@ pygame.font.init()
 # Global Variables
 player_score = 0
 opponent_score = 0
+opponent_scored = False
 basic_font = pygame.font.Font('freesansbold.ttf', 32)
 light_grey = (200, 200, 200)
 
@@ -14,7 +15,9 @@ def increase_player_score():
 
 def increase_opponent_score():
     global opponent_score
+    global opponent_scored
     opponent_score += 1
+    opponent_scored = True
 
 def draw_scores(screen, screen_width, screen_height):
     global light_grey

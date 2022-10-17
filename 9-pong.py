@@ -7,7 +7,7 @@ import Components.multiplayer as multiplayer
 from Components.player import Player
 from Components.opponent import Opponent
 from Components.gameBall import GameBall
-
+import Components.intro as intro
 
 # General setup
 pygame.init()
@@ -33,6 +33,8 @@ op = NULL
 ball = GameBall(screen)
 player_two = NULL 
 
+isPlaying = False
+
 
 def  playerMovement():
     # Controlled with the up and down arrow keys
@@ -42,6 +44,39 @@ def  playerMovement():
     if keys[pygame.K_DOWN]:
         player.moveDown() 
     return
+
+
+def secondPlayerMovement():
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_w]:
+        player_two.moveUp()
+    if keys[pygame.K_s]:
+        player_two.moveDown()
+    return
+
+multiplayer.init(screen)
+if(multiplayer.isMultiplayerSelected()):
+    player_two = multiplayer.getPlayerTwo()
+else:
+    op = multiplayer.getOp()    
+
+def skipIntro():
+    global isPlaying
+    if event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_UP:
+            isPlaying = True
+        if event.key == pygame.K_ESCAPE:
+            pygame.quit()
+            sys.exit()
+
+def skipIntro():
+    global isPlaying
+    if event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_UP:
+            isPlaying = True
+        if event.key == pygame.K_ESCAPE:
+            pygame.quit()
+            sys.exit()
 
 def secondPlayerMovement():
     keys = pygame.key.get_pressed()
@@ -88,14 +123,24 @@ if __name__ == "__main__":
         pygame.draw.rect(screen, (255, 255, 255),
                          itemBox.spawnBox(pygame.time.get_ticks()))
 
-        # Update scores
-        score.draw_scores(screen, screenWidth, screenHeight)
+         # plays intro title screen
+        if not isPlaying:
+            intro.intro_scene(screen, screenWidth, screenHeight)
+            skipIntro()
 
+        # Update scores
         if(multiplayer.isMultiplayerSelected()):
             ball.moveBall(player, player_two, itemBox, score)
         else: 
             ball.moveBall(player, op, itemBox, score)
 
-        # updating the window
+        if isPlaying:
+            score.draw_scores(screen, screenWidth, screenHeight)
+            # Move objects
+            playerMovement()
+            ball.moveBall(player, op, itemBox, score)
+            op.moveOpponent(ball.getBall())
+
+            # updating the window
         pygame.display.flip()
         clock.tick(60)
