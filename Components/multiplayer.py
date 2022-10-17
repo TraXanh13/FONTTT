@@ -25,14 +25,6 @@ def init(screenIn):
         else:
             response = input('Single Player or Multiplayer? (Respond with S or M)')
 
-def secondPlayerMovement():
-    keys = pygame.key.get_pressed()
-    if keys[pygame.K_w]:
-        player_two.moveUp()
-    if keys[pygame.K_s]:
-        player_two.moveDown()
-    return
-
 def isMultiplayerSelected():
     return multiplayerSelected
 

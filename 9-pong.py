@@ -36,16 +36,19 @@ player_two = NULL
 
 def  playerMovement():
     # Controlled with the up and down arrow keys
-    if event.type == pygame.KEYDOWN:
-        if event.key == pygame.K_DOWN:
-            player.moveDown()
-        if event.key == pygame.K_UP:
-            player.moveUp()
-        if event.key == pygame.K_q:
-            ball.resetBall()
-        if event.key == pygame.K_ESCAPE:
-            pygame.quit()
-            sys.exit()
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_UP]:
+        player.moveUp()
+    if keys[pygame.K_DOWN]:
+        player.moveDown() 
+    return
+
+def secondPlayerMovement():
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_w]:
+        player_two.moveUp()
+    if keys[pygame.K_s]:
+        player_two.moveDown()
     return
 
 multiplayer.init(screen)
@@ -62,7 +65,16 @@ if __name__ == "__main__":
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-
+        
+        
+        # Move objects
+        if(multiplayer.isMultiplayerSelected()):
+            secondPlayerMovement()
+            ball.moveBall(player, player_two, itemBox, score)
+        else: 
+            ball.moveBall(player, op, itemBox, score)
+            op.moveOpponent(ball.getBall())
+        playerMovement()
         # Draw objects
         screen.fill(bgColor)
         pygame.draw.aaline(screen, lightGrey, (screenWidth/2,
@@ -79,14 +91,10 @@ if __name__ == "__main__":
         # Update scores
         score.draw_scores(screen, screenWidth, screenHeight)
 
-        # Move objects
-        playerMovement()
         if(multiplayer.isMultiplayerSelected()):
-            multiplayer.secondPlayerMovement()
             ball.moveBall(player, player_two, itemBox, score)
         else: 
             ball.moveBall(player, op, itemBox, score)
-            op.moveOpponent(ball.getBall())
 
         # updating the window
         pygame.display.flip()
