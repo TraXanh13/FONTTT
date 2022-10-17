@@ -129,6 +129,8 @@ if __name__ == "__main__":
             skipIntro()
 
         # Update scores
+        score.draw_scores(screen, screenWidth, screenHeight)
+        
         if(multiplayer.isMultiplayerSelected()):
             ball.moveBall(player, player_two, itemBox, score)
         else: 
