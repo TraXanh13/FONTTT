@@ -12,10 +12,11 @@
   <li>Item Box (Kyle)</li>
     <p>&nbsp;&nbsp;&nbsp;&nbsp;We made the item boxes with the random mods to help liven the game up a bit. The item boxes will spawn roughly every 7 seconds in a new
       location somewhere on the playing field. By having item boxes triggering mods keeps the game interesting and provides some sort of randomness to the game and 
-      makes it slightly more difficult for both players. Right now, each mod will play a particular sound to help identify what mod is being activated and 1 of 6 
+      makes it slightly more difficult for both players. Right now, each mod will play a particular sound to help identify what mod is being activated and 1 of 7 
       mods will be triggered.
       <ol>
-        <li>Reverse the players controls (Up is down, down is up)</li>
+        <li>Reverse the controls (Up is down, down is up)</li>
+        <li>Cleanse controls (Revert controls back to normal)</li>
         <li>Shrink paddles by 25%</li>
         <li>Grows paddles by 15%</li>
         <li>Slows paddle speed by 25%</li>
