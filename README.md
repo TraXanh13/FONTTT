@@ -15,7 +15,7 @@
   <li>Mod (Nate)</li>
     <p>&nbsp;&nbsp;&nbsp;&nbsp;Write stuff here</p>
   <li>Multiplayer (Shreshth)</li>
-    <p>&nbsp;&nbsp;&nbsp;&nbsp;Write stuff here</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;We made a Multiplayer mod that allows users to select the gamemode (Singleplayer/Multiplayerthey would like to play. If Mutliplayer is selected a second paddle can be controlled by another player using W and S. This mod included creating opponents based on user selection and creating collisions and scoring based on the selected gamemode. This mod also included the addition of buttons and corresponding triggers on the start screen. </p>
 </ul>
 
 
