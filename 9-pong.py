@@ -67,11 +67,11 @@ if __name__ == "__main__":
         screen.fill(bgColor)
         pygame.draw.aaline(screen, lightGrey, (screenWidth/2,
                            0), (screenWidth/2, screenHeight))
-        player.drawCharacter()
+        player.drawCharacter("p")
         if (not multiplayer.isMultiplayerSelected()):
-            op.drawCharacter()
+            op.drawCharacter("op")
         else:
-            player_two.drawCharacter()
+            player_two.drawCharacter("p")
         ball.drawBall()
         pygame.draw.rect(screen, (255, 255, 255),
                          itemBox.spawnBox(pygame.time.get_ticks()))
