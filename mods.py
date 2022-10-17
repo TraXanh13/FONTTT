@@ -43,3 +43,4 @@ def fastBall(player, op, ball):
     if (ball.getSpeedX() < 15 and ball.getSpeedY() < 15):
         ball.changeBallSpeed(ball.getSpeedX() * 1.15,
                              ball.getSpeedY() * 1.15)
+

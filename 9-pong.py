@@ -1,3 +1,6 @@
+from glob import glob
+from pickle import FALSE
+from re import T
 import pygame
 import sys
 import Components.score as score
@@ -5,6 +8,7 @@ import Components.itemBox as itemBox
 from Components.player import Player
 from Components.opponent import Opponent
 from Components.gameBall import GameBall
+import Components.intro as intro
 
 # General setup
 pygame.init()
@@ -26,6 +30,8 @@ player = Player(screen)
 op = Opponent(screen)
 ball = GameBall(screen)
 
+isPlaying = False
+
 
 def playerMovement():
     # Controlled with the up and down arrow keys
@@ -40,6 +46,16 @@ def playerMovement():
             pygame.quit()
             sys.exit()
     return
+
+
+def skipIntro():
+    global isPlaying
+    if event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_UP:
+            isPlaying = True
+        if event.key == pygame.K_ESCAPE:
+            pygame.quit()
+            sys.exit()
 
 
 if __name__ == "__main__":
@@ -61,13 +77,20 @@ if __name__ == "__main__":
         pygame.draw.rect(screen, (255, 255, 255),
                          itemBox.spawnBox(pygame.time.get_ticks()))
 
-        # Update scores
-        score.draw_scores(screen, screenWidth, screenHeight)
+        # plays intro title screen
+        if not isPlaying:
+            intro.intro_scene(screen, screenWidth, screenHeight)
+            skipIntro()
 
-        # Move objects
-        playerMovement()
-        ball.moveBall(player, op, itemBox, score)
-        op.moveOpponent(ball.getBall())
+        print(isPlaying)
+
+        if isPlaying:
+            # Update scores
+            score.draw_scores(screen, screenWidth, screenHeight)
+            # Move objects
+            playerMovement()
+            ball.moveBall(player, op, itemBox, score)
+            op.moveOpponent(ball.getBall())
 
         # updating the window
         pygame.display.flip()
