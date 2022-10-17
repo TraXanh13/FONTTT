@@ -1,9 +1,22 @@
 import Components.sounds as sounds
 
 
-def inverseControls(player, *_):
-    sounds.playInverseControlSound()
-    player.changeSpeed(-player.speed)
+def inverseControls(player, op, ball):
+    if (ball.getBallDirection() and player.getSpeed() > 0):
+        sounds.playInverseControlSound()
+        player.changeSpeed(player.getSpeed() * -1)
+    elif (not ball.getBallDirection() and op.getSpeed() > 0):
+        sounds.playInverseControlSound()
+        op.changeSpeed(op.getSpeed() * -1)
+
+
+def cleanseControls(player, op, ball):
+    if (ball.getBallDirection() and player.getSpeed() < 0):
+        sounds.playCleanseSound()
+        player.changeSpeed(player.getSpeed() * -1)
+    elif (not ball.getBallDirection() and op.getSpeed() < 0):
+        sounds.playCleanseSound()
+        op.changeSpeed(op.getSpeed() * -1)
 
 
 def shrinkPaddle(player, op, ball):
