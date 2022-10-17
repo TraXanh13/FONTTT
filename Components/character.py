@@ -6,6 +6,9 @@ class Character:
     def getCharacter(self):
         return self.character
 
+    #Transparent Mod: Every time a player/opponent scores, the opposite player will have an almost transparent bar instead
+    #This awards the scoring player, while punishing the losing player at the same time.
+    #Although it might be punishing, it can encourage the losing player to focus and work on their predictions to be able score.
     def drawCharacter(self, string):
         if(score.opponent_scored == True):
             if(string == 'p'):
