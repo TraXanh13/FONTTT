@@ -13,6 +13,8 @@ inverseControlSound = pygame.mixer.Sound('./media/inverseControls.wav')
 growSound = pygame.mixer.Sound('./media/grow.wav')
 speedUpPaddleSound = pygame.mixer.Sound('./media/speedUpPaddle.wav')
 introSound = pygame.mixer.Sound('./media/intro.wav')
+cleanseSound = pygame.mixer.Sound('./media/cleanse.wav')
+
 
 def playPongSound():
     pygame.mixer.Sound.play(pongSound)
@@ -41,9 +43,13 @@ def playFastBallSound():
 def playInverseControlSound():
     pygame.mixer.Sound.play(inverseControlSound)
 
+def playCleanseSound():
+    pygame.mixer.Sound.play(cleanseSound)
+
 
 def playSpeedUpSound():
     pygame.mixer.Sound.play(speedUpPaddleSound)
+
 
 def playIntroSound():
     pygame.mixer.Sound.play(introSound)
