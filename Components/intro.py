@@ -15,8 +15,8 @@ def intro_scene(screen, screen_width, screen_height):
     if played == False:
         sounds.playIntroSound()
     title = basic_font.render(f"PONG", False, light_grey)
-    singleText = small_font.render(f"Press Down Arrow for Singleplayer", False, light_grey)
-    multiText = small_font.render(f"Press Up Arrow for Multiplayer", False, light_grey)
+    singleText = small_font.render(f"Press Up Arrow for Singleplayer", False, light_grey)
+    multiText = small_font.render(f"Press Down Arrow for Multiplayer", False, light_grey)
     quittext = small_font.render(f"Press ESC to Quit", False, light_grey)
 
     text_rect = title.get_rect(center=(screen_width/2, screen_height/2 - 150))
@@ -27,7 +27,7 @@ def intro_scene(screen, screen_width, screen_height):
     quit_text_rect = quittext.get_rect(
         center=(screen_width/2, screen_height/2 + 250))
     
-    multiText_rect.centerx = screen_width/2 + 75
+    multiText_rect.centerx = screen_width/2 - 75
     singleText_rect.centerx = screen_width/2
 
     screen.blit(title, text_rect)
