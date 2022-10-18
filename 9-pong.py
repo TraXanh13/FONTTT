@@ -62,12 +62,6 @@ if(multiplayer.isMultiplayerSelected()):
 else:
     op = multiplayer.getOp()    
 
-def gamemodeResponse():
-    if event.type == pygame.KEYDOWN:
-        if event.key == pygame.K_s:
-            multiplayer.multiplayerSelected(False)
-        if event.key == pygame.K_m:
-            multiplayer.multiplayerSelected(True)
 
 def skipIntro():
     global count
@@ -75,10 +69,10 @@ def skipIntro():
     global isMultiplayer
     if event.type == pygame.KEYDOWN:
         if event.key == pygame.K_UP:
-            multiplayer.setMultiplayer(True)
+            multiplayer.setMultiplayer(False)
             isPlaying = True
         if event.key == pygame.K_DOWN:
-            multiplayer.setMultiplayer(False)
+            multiplayer.setMultiplayer(True)
             isPlaying = True
         if event.key == pygame.K_ESCAPE:
             pygame.quit()

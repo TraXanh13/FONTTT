@@ -21,28 +21,17 @@ def intro_scene(screen, screen_width, screen_height):
 
     text_rect = title.get_rect(center=(screen_width/2, screen_height/2 - 150))
     singleText_rect = multiText.get_rect(
-        center=(screen_width/2, screen_height/2))
+        center=(screen_width/2, screen_height/2+75))
     multiText_rect = singleText.get_rect(
         center=(screen_width/2, screen_height/2 + 150))
     quit_text_rect = quittext.get_rect(
         center=(screen_width/2, screen_height/2 + 250))
     
+    multiText_rect.centerx = screen_width/2 + 75
+    singleText_rect.centerx = screen_width/2
 
     screen.blit(title, text_rect)
-    screen.blit(singleText, multiText_rect)
-    screen.blit(multiText, singleText_rect)
+    screen.blit(singleText, singleText_rect)
+    screen.blit(multiText, multiText_rect)
     screen.blit(quittext, quit_text_rect)
     played = True
-
-def gamemode(screen, screen_width, screen_height):
-    print('In')
-    singleText = small_font.render(f"Press S for Singleplayer", False, light_grey)
-    multiText = small_font.render(f"Press M for Multiplayer", False, light_grey)
-
-    singleText_rect = multiText.get_rect(
-        center=(screen_width/2, screen_height/2 + 150))
-    multiText_rect = singleText.get_rect(
-        center=(screen_width/2, screen_height/2))
-
-    screen.blit(singleText, multiText_rect)
-    screen.blit(multiText, singleText_rect)
