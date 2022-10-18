@@ -6,16 +6,16 @@
 
 <ul>
   <li>Mod (Brandon)</li>
-    <p>&nbsp;&nbsp;&nbsp;&nbsp;Write stuff here</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;We made a start screen to provide the user information on the name of the game, ability to start and quit the game. Also a theme song plays at the beginnning of the game to set the mood for the player that this is a retro style game.</p>
   <li>Mod (Chris)</li>
-    <p>&nbsp;&nbsp;&nbsp;&nbsp;We made the fast ball mod which changes the speed of the ball after it's randomly selected when the ball hits an item box; this can be            &nbsp;&nbsp;&nbsp;&nbsp;triggered multiple times. This adds increased difficulty for both the player and opponent when receiving the ball. We also added that the        &nbsp;&nbsp;&nbsp;&nbsp;ball changes colors to represent the speed of the ball. This adds a visual representation to help the player understand if the ball has          &nbsp;&nbsp;&nbsp;&nbsp;changed in speed. Both of these modifications we made to the game improves gameplay by both helping the player understand                        &nbsp;&nbsp;&nbsp;&nbsp;changes as well as increasing the difficulty.</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;We made the fast ball mod which changes the speed of the ball after it's randomly selected when the ball hits an item box; this can be    triggered multiple times. This adds increased difficulty for both the player and opponent when receiving the ball. We also added that the ball changes colors to represent the speed of the ball. This adds a visual representation to help the player understand if the ball has changed in speed. The ball colors from slowest to fastest respectively is blue, grey, yellow, orange and red. Both of these modifications we made to the game improves gameplay by both helping the player understand changes as well as increasing the difficulty.</p>
   <li>Item Box (Kyle)</li>
     <p>&nbsp;&nbsp;&nbsp;&nbsp;We made the item boxes with the random mods to help liven the game up a bit. By having item boxes triggering mods keeps the game
       interesting and provides some sort of randomness to the game.</p>
   <li>Mod (Nate)</li>
     <p>&nbsp;&nbsp;&nbsp;&nbsp;Write stuff here</p>
   <li>Multiplayer (Shreshth)</li>
-    <p>&nbsp;&nbsp;&nbsp;&nbsp;Write stuff here</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;We made a Multiplayer mod that allows users to select the gamemode (Singleplayer/Multiplayerthey would like to play. If Mutliplayer is selected a second paddle can be controlled by another player using W and S. This mod included creating opponents based on user selection and creating collisions and scoring based on the selected gamemode. This mod also included the addition of buttons and corresponding triggers on the start screen. </p>
 </ul>
 
 

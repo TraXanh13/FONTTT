@@ -17,13 +17,11 @@ class Ball:
     
 
     def drawBall(self):
-        BLUE = (0, 0, 255)
-        YELLOW = (255, 255, 0)
-        ORANGE = (255, 165, 0)
-        RED = (255, 0, 0)
+        BLUE = (66, 191, 221)
+        YELLOW = (255, 231, 76)
+        ORANGE = (255, 113, 31)
+        RED = (224, 26, 0)
     
-        
-        
         # Ball changes color depending on speed
         if(self.getSpeedX() < 7 and self.getSpeedX() > -7):
             pygame.draw.ellipse(self.screen, BLUE, self.ball)
