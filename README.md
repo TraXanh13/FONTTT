@@ -25,7 +25,7 @@
       </ol>
     </p>
   <li>Mod (Nate)</li>
-    <p>&nbsp;&nbsp;&nbsp;&nbsp;Write stuff here</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;Transparent Mod: Every time a player/opponent scores, the opposite player will have an almost transparent bar instead.This awards the scoring player, while punishing the losing player at the same time.Although it might be punishing, it can encourage the losing player to focus and work on their predictions to be able score.</p>
   <li>Multiplayer (Shreshth)</li>
     <p>&nbsp;&nbsp;&nbsp;&nbsp;We made a Multiplayer mod that allows users to select the gamemode (Singleplayer/Multiplayerthey would like to play. If Mutliplayer is selected a second paddle can be controlled by another player using W and S. This mod included creating opponents based on user selection and creating collisions and scoring based on the selected gamemode. This mod also included the addition of buttons and corresponding triggers on the start screen. </p>
 </ul>
