@@ -4,8 +4,8 @@ import Components.character as character
 
 class Opponent(character.Character):
     def __init__(self, screen):
-        self.speed = 2
-        self.defaultSpeed = 2
+        self.speed = 6
+        self.defaultSpeed = 6
         self.character = pygame.Rect(
             20, screen.get_height()/2-70, 10, 140)
         self.screen = screen
