@@ -3,11 +3,10 @@ import Components.character as character
 
 
 class Player(character.Character):
-    def __init__(self, screen):
+    def __init__(self, screen, rect):
         self.speed = 10
         self.defaultSpeed = 10
-        self.character = pygame.Rect(
-            screen.get_width()-20, screen.get_height()/2-70, 10, 140)
+        self.character = rect
         self.screen = screen
 
     def moveUp(self):
