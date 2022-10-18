@@ -47,7 +47,6 @@ def  playerMovement():
         sys.exit()
     return
 
-
 def secondPlayerMovement():
     keys = pygame.key.get_pressed()
     if keys[pygame.K_w]:
@@ -135,7 +134,6 @@ if __name__ == "__main__":
             playerMovement()
 
 
-            # updating the window
-            
+        # updating the window
         pygame.display.flip()
         clock.tick(60)
