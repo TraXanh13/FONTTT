@@ -29,12 +29,23 @@ enemyX_change = []
 enemyY_change = []
 num_enemies = 6
 
-for i in range(num_enemies):
-    enemyImg.append(pygame.image.load("./media/ufo.png"))
-    enemyX.append(random.randint(0, 735))
-    enemyY.append(random.randint(50, 150))
-    enemyX_change.append(4)
-    enemyY_change.append(40)
+# Called at the start of the game and when the player restarts the level at
+# game over
+
+
+def createEnemies():
+    enemyImg.clear()
+    enemyX.clear()
+    enemyY.clear()
+    for i in range(num_enemies):
+        enemyImg.append(pygame.image.load("./media/ufo.png"))
+        enemyX.append(random.randint(0, 735))
+        enemyY.append(random.randint(50, 150))
+        enemyX_change.append(4)
+        enemyY_change.append(40)
+
+
+createEnemies()
 
 # Bullet
 bulletImg = pygame.image.load("./media/bullet.png")
@@ -53,6 +64,10 @@ textY = 10
 # Game Over Text
 # create the font for game over
 game_over_font = pygame.font.Font("./fonts/Square.ttf", 128)
+try_again_font = pygame.font.Font("./fonts/Square.ttf", 50)
+
+# flags
+gameOverFlag = False
 
 
 def show_score(x, y):
@@ -88,7 +103,10 @@ def isCollision(enemyX, enemyY, bulletX, bulletY):
 
 def game_over():  # display the game over text
     over_font = game_over_font.render("GAME OVER", True, (255, 255, 255))
+    try_again = try_again_font.render(
+        "Press Space to Try Again", True, (255, 255, 255))
     screen.blit(over_font, (100, 250))
+    screen.blit(try_again, (110, 360))
 
 
 # Game Loop
@@ -119,6 +137,14 @@ while running:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 playerX_change = 0
 
+        if gameOverFlag == True:
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    gameOverFlag = False
+                    createEnemies()
+                    score_value = 0
+                    print('reset')
+
     # Screen Attributes
     screen.fill((0, 0, 0))
     screen.blit(background, (0, 0))
@@ -137,26 +163,28 @@ while running:
         if enemyY[i] > 440:  # trigger the end of the game
             for j in range(num_enemies):
                 enemyY[j] = 2000
+            gameOverFlag = True
+
+        if gameOverFlag == True:
             game_over()
-            break
+        else:
+            enemyX[i] += enemyX_change[i]
+            if enemyX[i] <= 0:
+                enemyX_change[i] = 4
+                enemyY[i] += enemyY_change[i]
+            elif enemyX[i] >= 736:
+                enemyX_change[i] = -4
+                enemyY[i] += enemyY_change[i]
 
-        enemyX[i] += enemyX_change[i]
-        if enemyX[i] <= 0:
-            enemyX_change[i] = 4
-            enemyY[i] += enemyY_change[i]
-        elif enemyX[i] >= 736:
-            enemyX_change[i] = -4
-            enemyY[i] += enemyY_change[i]
-
-        collision = isCollision(enemyX[i], enemyY[i], bulletX, bulletY)
-        if collision:
-            explosion_sound = pygame.mixer.Sound("./media/explosion.wav")
-            explosion_sound.play()
-            bulletY = 480
-            bullet_state = "ready"
-            score_value += 1
-            enemyX[i] = random.randint(0, 800)
-            enemyY[i] = random.randint(50, 150)
+            collision = isCollision(enemyX[i], enemyY[i], bulletX, bulletY)
+            if collision:
+                explosion_sound = pygame.mixer.Sound("./media/explosion.wav")
+                explosion_sound.play()
+                bulletY = 480
+                bullet_state = "ready"
+                score_value += 1
+                enemyX[i] = random.randint(0, 800)
+                enemyY[i] = random.randint(50, 150)
 
         enemy(enemyX[i], enemyY[i], i)
 
