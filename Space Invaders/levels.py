@@ -2,7 +2,7 @@ import pygame
 import math
 import random
 import json
-import sys
+import time
 
 f = open('config.json')
 data = json.load(f)
@@ -51,6 +51,7 @@ class Levels():
         # create the font for game over
         self.game_over_font = pygame.font.Font("./fonts/Square.ttf", 128)
         self.try_again_font = pygame.font.Font("./fonts/Square.ttf", 50)
+        self.stage_level_font = pygame.font.Font("./fonts/Square.ttf", 128)
 
         # flags
         self.gameOverFlag = False
@@ -74,6 +75,10 @@ class Levels():
 
     # Configures the level
     def initLevel(self, level):
+        stage_level = self.stage_level_font.render("LEVEL " + str(level), True, (255, 255, 255))
+        self.screen.blit(stage_level, (300, 300))
+        
+
         self.playerImg = pygame.image.load(data['levels'][level]['playerImg'])
         self.bullet_sound = pygame.mixer.Sound(
             data['levels'][level]['bulletSound'])
@@ -133,10 +138,13 @@ class Levels():
         self.screen.blit(try_again, (110, 360))
 
     def level1(self):
+
+        
         if (self.initLevelFlag == True):
             # Set up level
             self.initLevel("1")
             self.initLevelFlag = False
+            
 
         # Game Events
         for event in pygame.event.get():
@@ -231,6 +239,8 @@ class Levels():
             self.score_value += self.level_complete_value
 
     def level2(self):
+
+
         if (self.initLevelFlag == True):
             # Set up level
             self.initLevel("2")
