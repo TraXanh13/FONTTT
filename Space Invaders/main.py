@@ -17,8 +17,7 @@ lv = levels.Levels(screen)
 lv.createEnemies()
 
 # Game Loop
-running = True
-while running:
+while lv.isRunning():
     lv.gameState()
     pygame.display.update()
     clock.tick(60)

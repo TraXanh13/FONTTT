@@ -43,9 +43,13 @@ class Levels():
 
         # flags
         self.gameOverFlag = False
-
+        self.initLevelFlag = False
+        self.running = True
         # Background
         self.background = pygame.image.load("./media/stars.png")
+
+    def isRunning(self):
+        return self.running
 
     def gameState(self):
         if (self.lvState == "level1"):
@@ -102,7 +106,7 @@ class Levels():
         for event in pygame.event.get():
 
             if event.type == pygame.QUIT:
-                running = False
+                self.running = False
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
@@ -112,7 +116,7 @@ class Levels():
                     self.playerX_change = 3
 
                 if event.key == pygame.K_SPACE:
-                    if self.bullet_state is "ready":
+                    if self.bullet_state == "ready":
                         bullet_sound = pygame.mixer.Sound("./media/laser.wav")
                         bullet_sound.play()
                         self.bulletX = self.playerX
@@ -128,7 +132,6 @@ class Levels():
                         self.gameOverFlag = False
                         self.createEnemies()
                         self.score_value = 0
-                        print('reset')
 
         # Screen Attributes
         self.screen.fill((0, 0, 0))
@@ -180,7 +183,7 @@ class Levels():
             self.bulletY = 480
             self.bullet_state = "ready"
 
-        if self.bullet_state is "fire":
+        if self.bullet_state == "fire":
             self.fire_bullet(self.bulletX, self.bulletY)
             self.bulletY -= self.bulletY_change
 
@@ -195,7 +198,7 @@ class Levels():
         for event in pygame.event.get():
 
             if event.type == pygame.QUIT:
-                running = False
+                self.running = False
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
@@ -205,7 +208,7 @@ class Levels():
                     self.playerX_change = 3
 
                 if event.key == pygame.K_SPACE:
-                    if self.bullet_state is "ready":
+                    if self.bullet_state == "ready":
                         bullet_sound = pygame.mixer.Sound("./media/laser.wav")
                         bullet_sound.play()
                         self.bulletX = self.playerX
@@ -221,7 +224,6 @@ class Levels():
                         self.gameOverFlag = False
                         self.createEnemies()
                         self.score_value = 0
-                        print('reset')
 
         # Screen Attributes
         self.screen.fill((0, 0, 0))
@@ -273,7 +275,7 @@ class Levels():
             self.bulletY = 480
             self.bullet_state = "ready"
 
-        if self.bullet_state is "fire":
+        if self.bullet_state == "fire":
             self.fire_bullet(self.bulletX, self.bulletY)
             self.bulletY -= self.bulletY_change
 
