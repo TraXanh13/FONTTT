@@ -1,12 +1,18 @@
 import pygame
 import math
 import random
+import json
+import sys
+
+f = open('config.json')
+data = json.load(f)
 
 
 class Levels():
     def __init__(self, screen):
         self.lvState = "level1"
         self.screen = screen
+        self.levels = []
 
         # Player
         self.playerImg = pygame.image.load("./media/spaceship.png")
@@ -16,14 +22,18 @@ class Levels():
 
         # Enemy
         self.enemyImg = []
+        self.enemyUFOs = []
         self.enemyX = []
         self.enemyY = []
         self.enemyX_change = []
         self.enemyY_change = []
+        self.enemySpeed = 4
+        self.score_value = 1
         self.num_enemies = 6
 
         # Bullet
         self.bulletImg = pygame.image.load("./media/bullet.png")
+        self.bullet_sound = pygame.mixer.Sound("./media/laser.wav")
         self.bulletX = 0
         self.bulletY = 480
         self.bulletX_change = 0
@@ -32,6 +42,7 @@ class Levels():
 
         # Score Board
         self.score_value = 0
+        self.level_complete_value = 0
         self.font = pygame.font.Font("./fonts/Square.ttf", 24)
         self.textX = 10
         self.textY = 10
@@ -43,13 +54,13 @@ class Levels():
 
         # flags
         self.gameOverFlag = False
-        self.initLevelFlag = False
+        self.initLevelFlag = True
         self.running = True
-        # Background
+
+        # Background stuff
         self.background = pygame.image.load("./media/stars.png")
 
-    def isRunning(self):
-        return self.running
+    # The different game states
 
     def gameState(self):
         if (self.lvState == "level1"):
@@ -57,12 +68,32 @@ class Levels():
         elif (self.lvState == "level2"):
             self.level2()
 
-    def createEnemies(self):
+    # Returns whether the game is still running or not
+    def isRunning(self):
+        return self.running
+
+    # Configures the level
+    def initLevel(self, level):
+        self.playerImg = pygame.image.load(data['levels'][level]['playerImg'])
+        self.bullet_sound = pygame.mixer.Sound(
+            data['levels'][level]['bulletSound'])
+        self.background = pygame.image.load(
+            data['levels'][level]['backgroundImg'])
+        self.num_enemies = data['levels'][level]['numberOfEnemies']
+        self.enemySpeed = data['levels'][level]['enemySpeed']
+        self.level_complete_value = data['levels'][level]['levelCompleteValue']
+
+        pygame.mixer.music.load(data['levels'][level]['backgroundMusic'])
+        pygame.mixer.music.play(-1)
+        self.createEnemies(data['levels'][level]['enemyUFOs'])
+
+    # Creates the enemies for the level
+    def createEnemies(self, ufos=["./media/ufo.png"]):
         self.enemyImg.clear()
         self.enemyX.clear()
         self.enemyY.clear()
         for i in range(self.num_enemies):
-            self.enemyImg.append(pygame.image.load("./media/ufo.png"))
+            self.enemyImg.append(pygame.image.load(random.choice(ufos)))
             self.enemyX.append(random.randint(0, 735))
             self.enemyY.append(random.randint(50, 150))
             self.enemyX_change.append(4)
@@ -102,6 +133,11 @@ class Levels():
         self.screen.blit(try_again, (110, 360))
 
     def level1(self):
+        if (self.initLevelFlag == True):
+            # Set up level
+            self.initLevel("1")
+            self.initLevelFlag = False
+
         # Game Events
         for event in pygame.event.get():
 
@@ -117,8 +153,7 @@ class Levels():
 
                 if event.key == pygame.K_SPACE:
                     if self.bullet_state == "ready":
-                        bullet_sound = pygame.mixer.Sound("./media/laser.wav")
-                        bullet_sound.play()
+                        self.bullet_sound.play()
                         self.bulletX = self.playerX
                         self.fire_bullet(self.bulletX, self.bulletY)
 
@@ -130,8 +165,8 @@ class Levels():
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
                         self.gameOverFlag = False
-                        self.createEnemies()
                         self.score_value = 0
+                        self.level1()
 
         # Screen Attributes
         self.screen.fill((0, 0, 0))
@@ -192,8 +227,15 @@ class Levels():
 
         if (self.score_value == 5):
             self.lvState = "level2"
+            self.initLevelFlag = True
+            self.score_value += self.level_complete_value
 
     def level2(self):
+        if (self.initLevelFlag == True):
+            # Set up level
+            self.initLevel("2")
+            self.initLevelFlag = False
+
         # Game Events
         for event in pygame.event.get():
 
@@ -209,8 +251,7 @@ class Levels():
 
                 if event.key == pygame.K_SPACE:
                     if self.bullet_state == "ready":
-                        bullet_sound = pygame.mixer.Sound("./media/laser.wav")
-                        bullet_sound.play()
+                        self.bullet_sound.play()
                         self.bulletX = self.playerX
                         self.fire_bullet(self.bulletX, self.bulletY)
 
@@ -222,8 +263,8 @@ class Levels():
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
                         self.gameOverFlag = False
-                        self.createEnemies()
                         self.score_value = 0
+                        self.level1()
 
         # Screen Attributes
         self.screen.fill((0, 0, 0))
