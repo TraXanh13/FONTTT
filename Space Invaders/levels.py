@@ -96,7 +96,7 @@ class Levels():
             self.enemyImg.append(pygame.image.load(random.choice(ufos)))
             self.enemyX.append(random.randint(0, 735))
             self.enemyY.append(random.randint(50, 150))
-            self.enemyX_change.append(4)
+            self.enemyX_change.append(self.enemySpeed)
             self.enemyY_change.append(40)
 
     def show_score(self, x, y):
