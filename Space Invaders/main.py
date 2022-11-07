@@ -1,9 +1,8 @@
 import pygame
-import math
-import random
 import levels
 
 pygame.init()
+clock = pygame.time.Clock()
 
 # Game Screen
 screen = pygame.display.set_mode((800, 600))
@@ -20,5 +19,6 @@ lv.createEnemies()
 # Game Loop
 running = True
 while running:
-    lv.level1()
+    lv.gameState()
     pygame.display.update()
+    clock.tick(60)

@@ -47,8 +47,11 @@ class Levels():
         # Background
         self.background = pygame.image.load("./media/stars.png")
 
-    # Called at the start of the game and when the player restarts the level at
-    # game over
+    def gameState(self):
+        if (self.lvState == "level1"):
+            self.level1()
+        elif (self.lvState == "level2"):
+            self.level2()
 
     def createEnemies(self):
         self.enemyImg.clear()
@@ -95,6 +98,99 @@ class Levels():
         self.screen.blit(try_again, (110, 360))
 
     def level1(self):
+        # Game Events
+        for event in pygame.event.get():
+
+            if event.type == pygame.QUIT:
+                running = False
+
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    self.playerX_change = -3
+
+                if event.key == pygame.K_RIGHT:
+                    self.playerX_change = 3
+
+                if event.key == pygame.K_SPACE:
+                    if self.bullet_state is "ready":
+                        bullet_sound = pygame.mixer.Sound("./media/laser.wav")
+                        bullet_sound.play()
+                        self.bulletX = self.playerX
+                        self.fire_bullet(self.bulletX, self.bulletY)
+
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+                    self.playerX_change = 0
+
+            if self.gameOverFlag == True:
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_SPACE:
+                        self.gameOverFlag = False
+                        self.createEnemies()
+                        self.score_value = 0
+                        print('reset')
+
+        # Screen Attributes
+        self.screen.fill((0, 0, 0))
+        self.screen.blit(self.background, (0, 0))
+
+        self.playerX += self.playerX_change
+
+        if self.playerX <= 0:
+            self.playerX = 0
+        elif self.playerX >= 736:
+            self.playerX = 736
+
+        # Enemy Movement
+        for i in range(self.num_enemies):
+
+            # Game Over
+            if self.enemyY[i] > 440:  # trigger the end of the game
+                for j in range(self.num_enemies):
+                    self.enemyY[j] = 2000
+                self.gameOverFlag = True
+
+            if self.gameOverFlag == True:
+                self.game_over()
+            else:
+                self.enemyX[i] += self.enemyX_change[i]
+                if self.enemyX[i] <= 0:
+                    self.enemyX_change[i] = 4
+                    self.enemyY[i] += self.enemyY_change[i]
+                elif self.enemyX[i] >= 736:
+                    self.enemyX_change[i] = -4
+                    self.enemyY[i] += self.enemyY_change[i]
+
+                collision = self.isCollision(
+                    self.enemyX[i], self.enemyY[i], self.bulletX, self.bulletY)
+                if collision:
+                    explosion_sound = pygame.mixer.Sound(
+                        "./media/explosion.wav")
+                    explosion_sound.play()
+                    self.bulletY = 480
+                    self.bullet_state = "ready"
+                    self.score_value += 1
+                    self.enemyX[i] = random.randint(0, 800)
+                    self.enemyY[i] = random.randint(50, 150)
+
+            self.enemy(self.enemyX[i], self.enemyY[i], i)
+
+        # Bullet Animation
+        if self.bulletY <= 0:
+            self.bulletY = 480
+            self.bullet_state = "ready"
+
+        if self.bullet_state is "fire":
+            self.fire_bullet(self.bulletX, self.bulletY)
+            self.bulletY -= self.bulletY_change
+
+        self.player(self.playerX, self.playerY)
+        self.show_score(self.textX, self.textY)
+
+        if (self.score_value == 5):
+            self.lvState = "level2"
+
+    def level2(self):
         # Game Events
         for event in pygame.event.get():
 
