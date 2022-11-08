@@ -52,11 +52,13 @@ class Levels():
         # create the font for game over
         self.game_over_font = pygame.font.Font("./fonts/Square.ttf", 128)
         self.try_again_font = pygame.font.Font("./fonts/Square.ttf", 50)
+        self.stage_text_font = pygame.font.Font("./fonts/Square.ttf", 24)
 
         # flags
         self.gameOverFlag = False
         self.initLevelFlag = True
         self.running = True
+        self.currentStage = False
         self.level_counter = 1
 
         # Background stuff
