@@ -6,6 +6,7 @@
 * Brandon
 * Chris
 * Kyle
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;Created the level states and the general structure for upcoming levels and changes to be implemented. </p>
 * Nate
 * Shreshth
 
