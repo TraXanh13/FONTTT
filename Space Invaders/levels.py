@@ -59,7 +59,7 @@ class Levels():
 
         # Background stuff
         self.background = pygame.image.load("./media/stars.png")
-    
+
     # The different game states
 
     def gameState(self):
@@ -70,8 +70,8 @@ class Levels():
         elif (self.lvState == "level3"):
             self.level3()
         elif (self.lvState == "level4"):
-            self.level4()    
-        
+            self.level4()
+
     # Returns whether the game is still running or not
     def isRunning(self):
         return self.running
@@ -90,9 +90,9 @@ class Levels():
         pygame.mixer.music.load(data['levels'][level]['backgroundMusic'])
         pygame.mixer.music.play(-1)
         self.createEnemies(data['levels'][level]['enemyUFOs'])
-        
+
     # Creates the enemies for the level
-    def createEnemies(self, ufos=["./media/ufo.png"]):
+    def createEnemies(self, ufos=["./media/lvl_1_ufo.png"]):
         self.enemyImg.clear()
         self.enemyX.clear()
         self.enemyY.clear()
@@ -231,11 +231,10 @@ class Levels():
 
         if (self.score_value >= 10):
             victory_sound = pygame.mixer.Sound("./media/victory.wav")
-            victory_sound.play()  
+            victory_sound.play()
             self.lvState = "level2"
             self.initLevelFlag = True
             self.score_value += self.level_complete_value
-                       
 
     def level2(self):
         if (self.initLevelFlag == True):
@@ -329,14 +328,14 @@ class Levels():
 
         self.player(self.playerX, self.playerY)
         self.show_score(self.textX, self.textY)
-        
+
         if (self.score_value >= 50):
             victory_sound = pygame.mixer.Sound("./media/victory.wav")
-            victory_sound.play()  
+            victory_sound.play()
             self.lvState = "level3"
             self.initLevelFlag = True
-            self.score_value += self.level_complete_value 
-            
+            self.score_value += self.level_complete_value
+
     def level3(self):
         if (self.initLevelFlag == True):
             # Set up level
@@ -429,14 +428,13 @@ class Levels():
 
         self.player(self.playerX, self.playerY)
         self.show_score(self.textX, self.textY)
-        
+
         if (self.score_value >= 100):
             victory_sound = pygame.mixer.Sound("./media/victory.wav")
-            victory_sound.play()  
+            victory_sound.play()
             self.lvState = "level4"
             self.initLevelFlag = True
             self.score_value += self.level_complete_value
-            
 
     def level4(self):
         if (self.initLevelFlag == True):
@@ -530,5 +528,5 @@ class Levels():
 
         self.player(self.playerX, self.playerY)
         self.show_score(self.textX, self.textY)
-        
-        #Play victory sound and win screen
+
+        # Play victory sound and win screen
