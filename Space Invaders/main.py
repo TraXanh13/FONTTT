@@ -9,7 +9,7 @@ screen = pygame.display.set_mode((800, 600))
 pygame.display.set_caption("Space Invaders")
 
 # Sound
-pygame.mixer.music.load("./media/background.wav")
+pygame.mixer.music.load("./media/background_1.wav")
 pygame.mixer.music.play(-1)
 
 # Init level
