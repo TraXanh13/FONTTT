@@ -4,12 +4,15 @@
 
 ## Space Invaders 👾
 * Brandon
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;Created the start screen and win screen </p>
 * Chris
   <p>&nbsp;&nbsp;&nbsp;&nbsp;Created levels 3 and 4. Assisted in the creation of the JSON file. Implemented the new required sounds. </p>
 * Kyle
-  <p>&nbsp;&nbsp;&nbsp;&nbsp;Created the level states and the general structure for upcoming levels and changes to be implemented. </p>
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;Created the level states, JSON files and the general structure for upcoming levels and changes to be implemented. </p>
 * Nate
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;Created the screen in between levels and level 2</p>
 * Shreshth
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;Created the visuals for the game and helped fix bugs</p>
 
 ## Pong Game Mods 🏓
 
