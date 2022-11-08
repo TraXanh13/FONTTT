@@ -14,7 +14,7 @@ class Levels():
         self.levels = []
 
         # Player
-        self.playerImg = pygame.image.load("./media/spaceship.png")
+        self.playerImg = pygame.image.load("./media/game_ship.png")
         self.playerX = 370
         self.playerY = 480
         self.playerX_change = 0
@@ -92,7 +92,7 @@ class Levels():
         
         #Congratulations message
         stage_message = self.stage_text_font.render("Level " + str(self.level_counter), True, (255, 255, 255))
-        text_rect = stage_message.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2))
+        text_rect = stage_message.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2- 55) )
         self.screen.blit(stage_message, text_rect)
         
         #Instruction messages - Changes each level
@@ -100,8 +100,8 @@ class Levels():
             #Level 1 messages
             instruction_message = self.stage_text_font.render("Press space to shoot!", True, (255, 255, 255))
             instruction_message2 = self.stage_text_font.render("Score 10 points to go to the next level!", True, (255, 255, 255))
-            text_rect = instruction_message.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2 + 55))
-            text_rect2 = instruction_message2.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2 + 110))
+            text_rect = instruction_message.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2))
+            text_rect2 = instruction_message2.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2 + 55))
             self.screen.blit(instruction_message, text_rect)
             self.screen.blit(instruction_message2, text_rect2)
             
@@ -109,8 +109,8 @@ class Levels():
             #Level 2 messages
             instruction_message = self.stage_text_font.render("A different UFO appeared!", True, (255, 255, 255))
             instruction_message2 = self.stage_text_font.render("Score 50 points to go to the next level!", True, (255, 255, 255))
-            text_rect = instruction_message.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2 + 55))
-            text_rect2 = instruction_message2.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2 + 110))
+            text_rect = instruction_message.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2))
+            text_rect2 = instruction_message2.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2 + 55))
             self.screen.blit(instruction_message, text_rect)
             self.screen.blit(instruction_message2, text_rect2)
             
@@ -118,8 +118,8 @@ class Levels():
             #Level 3 messages
             instruction_message = self.stage_text_font.render("More UFOs are showing up and they're faster!", True, (255, 255, 255))
             instruction_message2 = self.stage_text_font.render("Score 100 points to go to the next level!", True, (255, 255, 255))
-            text_rect = instruction_message.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2 + 55))
-            text_rect2 = instruction_message2.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2 + 110))
+            text_rect = instruction_message.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2))
+            text_rect2 = instruction_message2.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2 + 55))
             self.screen.blit(instruction_message, text_rect)
             self.screen.blit(instruction_message2, text_rect2)
             
@@ -127,8 +127,8 @@ class Levels():
             #Level 4 messages
             instruction_message = self.stage_text_font.render("They're going crazy! Careful!", True, (255, 255, 255))
             instruction_message2 = self.stage_text_font.render("Score 150 points to finish the game!", True, (255, 255, 255))
-            text_rect = instruction_message.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2 + 55))
-            text_rect2 = instruction_message2.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2 + 110))
+            text_rect = instruction_message.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2))
+            text_rect2 = instruction_message2.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2 + 55))
             self.screen.blit(instruction_message, text_rect)
             self.screen.blit(instruction_message2, text_rect2)
             

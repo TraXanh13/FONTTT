@@ -1,7 +1,7 @@
 {
     "levels": {
         "1": {
-            "playerImg": "./media/spaceship.png",
+            "playerImg": "./media/game_ship.png",
             "bulletSound": "./media/shoot_1.wav",
             "backgroundImg": "./media/stars.png",
             "backgroundMusic": "./media/background_1.wav",
@@ -14,9 +14,9 @@
             ]
         },
         "2": {
-            "playerImg": "./media/spaceship.png",
+            "playerImg": "./media/game_ship.png",
             "bulletSound": "./media/shoot_2.wav",
-            "backgroundImg": "./media/stars.png",
+            "backgroundImg": "./media/stage2BG.png",
             "backgroundMusic": "./media/background_2.wav",
             "numberOfEnemies": 8,
             "enemySpeed": 3,
@@ -29,9 +29,9 @@
         },
 
         "3": {
-            "playerImg": "./media/spaceship.png",
+            "playerImg": "./media/game_ship.png",
             "bulletSound": "./media/shoot_3.wav",
-            "backgroundImg": "./media/stars.png",
+            "backgroundImg": "./media/stage3BG.png",
             "backgroundMusic": "./media/background_3.wav",
             "numberOfEnemies": 12,
             "enemySpeed": 4,
@@ -39,14 +39,15 @@
             "levelCompleteValue": 15,
             "enemyUFOs": [
                 "./media/ufo.png",
-                "./media/lvl_2_ufo.png"
+                "./media/lvl_2_ufo.png",
+                "./media/lvl_3_ufo.png"
             ]
         },
 
         "4": {
-            "playerImg": "./media/spaceship.png",
+            "playerImg": "./media/game_ship.png",
             "bulletSound": "./media/shoot_4.wav",
-            "backgroundImg": "./media/stars.png",
+            "backgroundImg": "./media/stage4BG.png",
             "backgroundMusic": "./media/background_4.wav",
             "numberOfEnemies": 14,
             "enemySpeed": 5,
@@ -54,7 +55,9 @@
             "levelCompleteValue": 100,
             "enemyUFOs": [
                 "./media/ufo.png",
-                "./media/lvl_2_ufo.png"
+                "./media/lvl_2_ufo.png",
+                "./media/lvl_3_ufo.png",
+                "./media/lvl_4_ufo.png"
             ]
         }
     }
