@@ -54,5 +54,5 @@ while lv.isRunning():
     else:
         lv.stageScreen()
         pygame.display.update()
-        pygame.time.wait(2000)
+        pygame.time.wait(3000)
         lv.currentStage = True

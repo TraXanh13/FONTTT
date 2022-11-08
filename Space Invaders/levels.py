@@ -2,8 +2,6 @@ import pygame
 import math
 import random
 import json
-import time
-import sys
 
 f = open('config.json')
 data = json.load(f)
@@ -74,7 +72,10 @@ class Levels():
         elif (self.lvState == "level3"):
             self.level3()
         elif (self.lvState == "level4"):
-            self.level4()    
+            self.level4()   
+        elif (self.lvState == "win"):
+             self.winScreen()
+             
         
     # Returns whether the game is still running or not
     def isRunning(self):
@@ -88,9 +89,82 @@ class Levels():
     def stageScreen(self):
         self.screen.fill((0, 0, 0))
         self.screen.blit(self.background, (0, 0))
-        stage_level = self.stage_text_font.render("LEVEL " + str(self.level_counter), True, (255, 255, 255))
-        self.screen.blit(stage_level, (300, 300))
+        
+        #Congratulations message
+        stage_message = self.stage_text_font.render("Level " + str(self.level_counter), True, (255, 255, 255))
+        text_rect = stage_message.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2))
+        self.screen.blit(stage_message, text_rect)
+        
+        #Instruction messages - Changes each level
+        if(self.lvState == "level1"):
+            #Level 1 messages
+            instruction_message = self.stage_text_font.render("Press space to shoot!", True, (255, 255, 255))
+            instruction_message2 = self.stage_text_font.render("Score 10 points to go to the next level!", True, (255, 255, 255))
+            text_rect = instruction_message.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2 + 55))
+            text_rect2 = instruction_message2.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2 + 110))
+            self.screen.blit(instruction_message, text_rect)
+            self.screen.blit(instruction_message2, text_rect2)
+            
+        elif(self.lvState == "level2"):
+            #Level 2 messages
+            instruction_message = self.stage_text_font.render("A different UFO appeared!", True, (255, 255, 255))
+            instruction_message2 = self.stage_text_font.render("Score 20 points to go to the next level!", True, (255, 255, 255))
+            text_rect = instruction_message.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2 + 55))
+            text_rect2 = instruction_message2.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2 + 110))
+            self.screen.blit(instruction_message, text_rect)
+            self.screen.blit(instruction_message2, text_rect2)
+            
+        elif(self.lvState == "level3"):
+            #Level 3 messages
+            instruction_message = self.stage_text_font.render("More UFOs are showing up and they're faster!", True, (255, 255, 255))
+            instruction_message2 = self.stage_text_font.render("Score 10 points to go to the next level!", True, (255, 255, 255))
+            text_rect = instruction_message.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2 + 55))
+            text_rect2 = instruction_message2.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2 + 110))
+            self.screen.blit(instruction_message, text_rect)
+            self.screen.blit(instruction_message2, text_rect2)
+            
+        elif(self.lvState == "level4"):
+            #Level 4 messages
+            instruction_message = self.stage_text_font.render("They're going crazy! Careful!", True, (255, 255, 255))
+            instruction_message2 = self.stage_text_font.render("Score 10 points to go to the next level!", True, (255, 255, 255))
+            text_rect = instruction_message.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2 + 55))
+            text_rect2 = instruction_message2.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2 + 110))
+            self.screen.blit(instruction_message, text_rect)
+            self.screen.blit(instruction_message2, text_rect2)
+            
+            
+    # Win Screen at the end of finishing the game
+    def winScreen(self):
+        self.screen.fill((0, 0, 0))
+        self.screen.blit(self.background, (0, 0))
+    
+        #Congratulations message
+        congrats_message = self.stage_text_font.render("Congralutations, you completed all levels!", True, (255, 255, 255))
+        text_rect = congrats_message.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2))
+        self.screen.blit(congrats_message, text_rect)
 
+        #Instruction Text - Play Again
+        play_again_message = self.stage_text_font.render("Press Space to play again", True, (255, 255, 255))
+        text_rect = play_again_message.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2 + 55))
+        self.screen.blit(play_again_message, text_rect)
+        
+        #Instruction Text - Quit
+        quit_message = self.stage_text_font.render("Press Escape to exit the game", True, (255, 255, 255))
+        text_rect = quit_message.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2 + 110))
+        self.screen.blit(quit_message, text_rect)
+    
+        
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    self.lvState = "level1"
+                    self.currentStage = False
+                    self.initLevelFlag = True
+                    self.level_counter = 1
+                    self.score_value = 0
+                if event.key == pygame.K_ESCAPE:
+                    pygame.quit()
+        
     # Configures the level
     def initLevel(self, level):
         self.playerImg = pygame.image.load(data['levels'][level]['playerImg'])
@@ -150,6 +224,7 @@ class Levels():
             "Press Space to Try Again", True, (255, 255, 255))
         self.screen.blit(over_font, (100, 250))
         self.screen.blit(try_again, (110, 360))
+        
 
     def level1(self):
         if (self.initLevelFlag == True):
@@ -347,7 +422,7 @@ class Levels():
         self.player(self.playerX, self.playerY)
         self.show_score(self.textX, self.textY)
         
-        if (self.score_value >= 50):
+        if (self.score_value >= 20):
             victory_sound = pygame.mixer.Sound("./media/victory.wav")
             victory_sound.play()  
             self.lvState = "level3"
@@ -449,7 +524,7 @@ class Levels():
         self.player(self.playerX, self.playerY)
         self.show_score(self.textX, self.textY)
         
-        if (self.score_value >= 100):
+        if (self.score_value >= 40):
             victory_sound = pygame.mixer.Sound("./media/victory.wav")
             victory_sound.play()  
             self.lvState = "level4"
@@ -553,3 +628,11 @@ class Levels():
         self.show_score(self.textX, self.textY)
         
         #Play victory sound and win screen
+        
+        if (self.score_value >= 60):
+            victory_sound = pygame.mixer.Sound("./media/victory.wav")
+            victory_sound.play()  
+            self.lvState = "win"
+            self.score_value = 0
+            
+    
