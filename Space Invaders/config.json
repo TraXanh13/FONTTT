@@ -2,11 +2,11 @@
     "levels": {
         "1": {
             "playerImg": "./media/spaceship.png",
-            "bulletSound": "./media/laser.wav",
+            "bulletSound": "./media/shoot_1.wav",
             "backgroundImg": "./media/stars.png",
-            "backgroundMusic": "./media/background.wav",
+            "backgroundMusic": "./media/background_1.wav",
             "numberOfEnemies": 6,
-            "enemySpeed": 4,
+            "enemySpeed": 2,
             "scoreValue": 1,
             "levelCompleteValue": 5,
             "enemyUFOs": [
@@ -15,13 +15,43 @@
         },
         "2": {
             "playerImg": "./media/spaceship.png",
-            "bulletSound": "./media/laser.wav",
+            "bulletSound": "./media/shoot_2.wav",
             "backgroundImg": "./media/stars.png",
-            "backgroundMusic": "./media/background.wav",
+            "backgroundMusic": "./media/background_2.wav",
             "numberOfEnemies": 8,
+            "enemySpeed": 3,
+            "scoreValue": 2,
+            "levelCompleteValue": 10,
+            "enemyUFOs": [
+                "./media/ufo.png",
+                "./media/lvl_2_ufo.png"
+            ]
+        },
+
+        "3": {
+            "playerImg": "./media/spaceship.png",
+            "bulletSound": "./media/shoot_3.wav",
+            "backgroundImg": "./media/stars.png",
+            "backgroundMusic": "./media/background_3.wav",
+            "numberOfEnemies": 12,
             "enemySpeed": 4,
-            "scoreValue": 1,
-            "levelCompleteValue": 5,
+            "scoreValue": 3,
+            "levelCompleteValue": 15,
+            "enemyUFOs": [
+                "./media/ufo.png",
+                "./media/lvl_2_ufo.png"
+            ]
+        },
+
+        "4": {
+            "playerImg": "./media/spaceship.png",
+            "bulletSound": "./media/shoot_4.wav",
+            "backgroundImg": "./media/stars.png",
+            "backgroundMusic": "./media/background_4.wav",
+            "numberOfEnemies": 14,
+            "enemySpeed": 5,
+            "scoreValue": 4,
+            "levelCompleteValue": 100,
             "enemyUFOs": [
                 "./media/ufo.png",
                 "./media/lvl_2_ufo.png"
