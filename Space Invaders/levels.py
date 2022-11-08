@@ -108,7 +108,7 @@ class Levels():
         elif(self.lvState == "level2"):
             #Level 2 messages
             instruction_message = self.stage_text_font.render("A different UFO appeared!", True, (255, 255, 255))
-            instruction_message2 = self.stage_text_font.render("Score 20 points to go to the next level!", True, (255, 255, 255))
+            instruction_message2 = self.stage_text_font.render("Score 50 points to go to the next level!", True, (255, 255, 255))
             text_rect = instruction_message.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2 + 55))
             text_rect2 = instruction_message2.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2 + 110))
             self.screen.blit(instruction_message, text_rect)
@@ -117,7 +117,7 @@ class Levels():
         elif(self.lvState == "level3"):
             #Level 3 messages
             instruction_message = self.stage_text_font.render("More UFOs are showing up and they're faster!", True, (255, 255, 255))
-            instruction_message2 = self.stage_text_font.render("Score 10 points to go to the next level!", True, (255, 255, 255))
+            instruction_message2 = self.stage_text_font.render("Score 100 points to go to the next level!", True, (255, 255, 255))
             text_rect = instruction_message.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2 + 55))
             text_rect2 = instruction_message2.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2 + 110))
             self.screen.blit(instruction_message, text_rect)
@@ -126,7 +126,7 @@ class Levels():
         elif(self.lvState == "level4"):
             #Level 4 messages
             instruction_message = self.stage_text_font.render("They're going crazy! Careful!", True, (255, 255, 255))
-            instruction_message2 = self.stage_text_font.render("Score 10 points to go to the next level!", True, (255, 255, 255))
+            instruction_message2 = self.stage_text_font.render("Score 150 points to finish the game!", True, (255, 255, 255))
             text_rect = instruction_message.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2 + 55))
             text_rect2 = instruction_message2.get_rect(center=(self.screen.get_width()/2, self.screen.get_height()/2 + 110))
             self.screen.blit(instruction_message, text_rect)
