@@ -5,6 +5,7 @@
 ## Space Invaders 👾
 * Brandon
 * Chris
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;Created levels 3 and 4. Assisted in the creation of the JSON file. Implemented the new required sounds. </p>
 * Kyle
   <p>&nbsp;&nbsp;&nbsp;&nbsp;Created the level states and the general structure for upcoming levels and changes to be implemented. </p>
 * Nate
