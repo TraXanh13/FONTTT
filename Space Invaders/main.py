@@ -2,7 +2,7 @@ import pygame
 import levels
 
 pygame.init()
-clock = pygame.time.Clock()
+clock = pygame.time.Clock()                               
 
 # Game Screen
 screen = pygame.display.set_mode((800, 600))
@@ -14,7 +14,7 @@ pygame.mixer.music.play(-1)
 
 # Init level
 lv = levels.Levels(screen)
-lv.createEnemies()
+lv.createEnemies()                     
 
 #Init Main Menu Components
 background = pygame.image.load("./media/stars.png")

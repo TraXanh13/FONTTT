@@ -54,7 +54,7 @@
             "numberOfEnemies": 14,
             "enemySpeed": 5,
             "scoreValue": 4,
-            "levelCompleteValue": 100,
+            "levelCompleteValue": 50,
             "enemyUFOs": [
                 "./media/lvl_1_ufo.png",
                 "./media/lvl_2_ufo.png",

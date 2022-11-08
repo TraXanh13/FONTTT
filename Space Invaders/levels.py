@@ -151,7 +151,7 @@ class Levels():
             instruction_message = self.stage_text_font.render(
                 "They're going crazy! Careful!", True, (255, 255, 255))
             instruction_message2 = self.stage_text_font.render(
-                "Score 150 points to finish the game!", True, (255, 255, 255))
+                "Score 200 points to finish the game!", True, (255, 255, 255))
             text_rect = instruction_message.get_rect(
                 center=(self.screen.get_width()/2, self.screen.get_height()/2))
             text_rect2 = instruction_message2.get_rect(
@@ -297,7 +297,6 @@ class Levels():
                         self.initLevelFlag = True
                         self.level1()
 
-        print(self.gameOverFlag)
         # Screen Attributes
         self.screen.fill((0, 0, 0))
         self.screen.blit(self.background, (0, 0))
@@ -313,10 +312,8 @@ class Levels():
         for i in range(self.num_enemies):
 
             # Game Over
-            print(self.enemyY[i])
             if self.gameOverFlag == False:
                 if self.enemyY[i] > 440:  # trigger the end of the game
-                    print('hi')
                     for j in range(self.num_enemies):
                         self.enemyY[j] = 2000
                     self.gameOverFlag = True
@@ -677,13 +674,6 @@ class Levels():
 
         self.player(self.playerX, self.playerY)
         self.show_score(self.textX, self.textY)
-
-        if (self.score_value >= 100 and self.winFlag == False):
-            victory_sound = pygame.mixer.Sound("./media/victory.wav")
-            victory_sound.play()
-            self.lvState = 'win'
-            self.winFlag = True
-            self.gameState()
 
         # Play victory sound and win screen
         if (self.score_value >= 200):
