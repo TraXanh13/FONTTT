@@ -63,6 +63,14 @@ class Levels():
         # Background stuff
         self.background = pygame.image.load("./media/stars.png")
 
+    def gameOverFunc(self, level, event):
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                self.gameOverFlag = False
+                self.score_value = 0
+                self.createEnemies()
+                level()
+
     # The different game states
 
     def gameState(self):
@@ -289,6 +297,7 @@ class Levels():
                         self.initLevelFlag = True
                         self.level1()
 
+        print(self.gameOverFlag)
         # Screen Attributes
         self.screen.fill((0, 0, 0))
         self.screen.blit(self.background, (0, 0))
@@ -304,10 +313,13 @@ class Levels():
         for i in range(self.num_enemies):
 
             # Game Over
-            if self.enemyY[i] > 440:  # trigger the end of the game
-                for j in range(self.num_enemies):
-                    self.enemyY[j] = 2000
-                self.gameOverFlag = True
+            print(self.enemyY[i])
+            if self.gameOverFlag == False:
+                if self.enemyY[i] > 440:  # trigger the end of the game
+                    print('hi')
+                    for j in range(self.num_enemies):
+                        self.enemyY[j] = 2000
+                    self.gameOverFlag = True
 
             if self.gameOverFlag == True:
                 self.game_over()
@@ -410,10 +422,11 @@ class Levels():
         for i in range(self.num_enemies):
 
             # Game Over
-            if self.enemyY[i] > 440:  # trigger the end of the game
-                for j in range(self.num_enemies):
-                    self.enemyY[j] = 2000
-                self.gameOverFlag = True
+            if self.gameOverFlag == False:
+                if self.enemyY[i] > 440:  # trigger the end of the game
+                    for j in range(self.num_enemies):
+                        self.enemyY[j] = 2000
+                    self.gameOverFlag = True
 
             if self.gameOverFlag == True:
                 self.game_over()
@@ -515,10 +528,11 @@ class Levels():
         for i in range(self.num_enemies):
 
             # Game Over
-            if self.enemyY[i] > 440:  # trigger the end of the game
-                for j in range(self.num_enemies):
-                    self.enemyY[j] = 2000
-                self.gameOverFlag = True
+            if self.gameOverFlag == False:
+                if self.enemyY[i] > 440:  # trigger the end of the game
+                    for j in range(self.num_enemies):
+                        self.enemyY[j] = 2000
+                    self.gameOverFlag = True
 
             if self.gameOverFlag == True:
                 self.game_over()
@@ -621,10 +635,11 @@ class Levels():
         for i in range(self.num_enemies):
 
             # Game Over
-            if self.enemyY[i] > 440:  # trigger the end of the game
-                for j in range(self.num_enemies):
-                    self.enemyY[j] = 2000
-                self.gameOverFlag = True
+            if self.gameOverFlag == False:
+                if self.enemyY[i] > 440:  # trigger the end of the game
+                    for j in range(self.num_enemies):
+                        self.enemyY[j] = 2000
+                    self.gameOverFlag = True
 
             if self.gameOverFlag == True:
                 self.game_over()
@@ -662,6 +677,13 @@ class Levels():
 
         self.player(self.playerX, self.playerY)
         self.show_score(self.textX, self.textY)
+
+        if (self.score_value >= 100 and self.winFlag == False):
+            victory_sound = pygame.mixer.Sound("./media/victory.wav")
+            victory_sound.play()
+            self.lvState = 'win'
+            self.winFlag = True
+            self.gameState()
 
         # Play victory sound and win screen
         if (self.score_value >= 200):
