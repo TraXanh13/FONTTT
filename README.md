@@ -2,7 +2,16 @@
 ![alt text](https://github.com/TraXanh13/FONTTT/blob/main/fontt.jpg?raw=true)
 <p>Team directory for Brandon, Chris, Kyle, Nate, and Shreshth </p>
 
-## Pong Game Mods
+## Space Invaders 👾
+* Brandon
+* Chris
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;Created levels 3 and 4. Assisted in the creation of the JSON file. Implemented the new required sounds. </p>
+* Kyle
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;Created the level states and the general structure for upcoming levels and changes to be implemented. </p>
+* Nate
+* Shreshth
+
+## Pong Game Mods 🏓
 
 <ul>
   <li>Mod (Brandon)</li>

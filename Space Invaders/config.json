@@ -11,7 +11,7 @@
             "scoreValue": 1,
             "levelCompleteValue": 5,
             "enemyUFOs": [
-                "./media/ufo.png"
+                "./media/lvl_1_ufo.png"
             ]
         },
         "2": {
@@ -25,11 +25,10 @@
             "scoreValue": 2,
             "levelCompleteValue": 10,
             "enemyUFOs": [
-                "./media/ufo.png",
+                "./media/lvl_1_ufo.png",
                 "./media/lvl_2_ufo.png"
             ]
         },
-
         "3": {
             "playerImg": "./media/lvl_3_ship.png",
             "bulletImg": "./media/lvl_3_bullet.png",
@@ -41,15 +40,14 @@
             "scoreValue": 3,
             "levelCompleteValue": 15,
             "enemyUFOs": [
-                "./media/ufo.png",
+                "./media/lvl_1_ufo.png",
                 "./media/lvl_2_ufo.png",
                 "./media/lvl_3_ufo.png"
             ]
         },
-
         "4": {
             "playerImg": "./media/lvl_4_ship.png",
-            "bulletImg": "./media/lvL_3_bullet.png",
+            "bulletImg": "./media/lvl_3_bullet.png",
             "bulletSound": "./media/shoot_4.wav",
             "backgroundImg": "./media/stage4BG.png",
             "backgroundMusic": "./media/background_4.wav",
@@ -58,7 +56,7 @@
             "scoreValue": 4,
             "levelCompleteValue": 100,
             "enemyUFOs": [
-                "./media/ufo.png",
+                "./media/lvl_1_ufo.png",
                 "./media/lvl_2_ufo.png",
                 "./media/lvl_3_ufo.png",
                 "./media/lvl_4_ufo.png"
