@@ -2,7 +2,14 @@
 ![alt text](https://github.com/TraXanh13/FONTTT/blob/main/fontt.jpg?raw=true)
 <p>Team directory for Brandon, Chris, Kyle, Nate, and Shreshth </p>
 
-## Pong Game Mods
+## Space Invaders 👾
+* Brandon
+* Chris
+* Kyle
+* Nate
+* Shreshth
+
+## Pong Game Mods 🏓
 
 <ul>
   <li>Mod (Brandon)</li>
