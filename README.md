@@ -4,6 +4,7 @@
 
 ## Space Invaders 👾
 * Brandon
+  <p>&nbsp;&nbsp;&nbsp;&nbsp;Created the start screen and win screen </p>
 * Chris
   <p>&nbsp;&nbsp;&nbsp;&nbsp;Created levels 3 and 4. Assisted in the creation of the JSON file. Implemented the new required sounds. </p>
 * Kyle
