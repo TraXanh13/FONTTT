@@ -1,7 +1,8 @@
 {
     "levels": {
         "1": {
-            "playerImg": "./media/game_ship.png",
+            "playerImg": "./media/lvl_1_ship.png",
+            "bulletImg": "./media/bullet.png",
             "bulletSound": "./media/shoot_1.wav",
             "backgroundImg": "./media/stars.png",
             "backgroundMusic": "./media/background_1.wav",
@@ -14,7 +15,8 @@
             ]
         },
         "2": {
-            "playerImg": "./media/game_ship.png",
+            "playerImg": "./media/lvl_2_ship.png",
+            "bulletImg": "./media/bullet.png",
             "bulletSound": "./media/shoot_2.wav",
             "backgroundImg": "./media/stage2BG.png",
             "backgroundMusic": "./media/background_2.wav",
@@ -29,7 +31,8 @@
         },
 
         "3": {
-            "playerImg": "./media/game_ship.png",
+            "playerImg": "./media/lvl_3_ship.png",
+            "bulletImg": "./media/lvl_3_bullet.png",
             "bulletSound": "./media/shoot_3.wav",
             "backgroundImg": "./media/stage3BG.png",
             "backgroundMusic": "./media/background_3.wav",
@@ -45,7 +48,8 @@
         },
 
         "4": {
-            "playerImg": "./media/game_ship.png",
+            "playerImg": "./media/lvl_4_ship.png",
+            "bulletImg": "./media/lvL_3_bullet.png",
             "bulletSound": "./media/shoot_4.wav",
             "backgroundImg": "./media/stage4BG.png",
             "backgroundMusic": "./media/background_4.wav",

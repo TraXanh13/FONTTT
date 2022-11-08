@@ -14,7 +14,7 @@ class Levels():
         self.levels = []
 
         # Player
-        self.playerImg = pygame.image.load("./media/game_ship.png")
+        self.playerImg = pygame.image.load("./media/lvl_1_ship.png")
         self.playerX = 370
         self.playerY = 480
         self.playerX_change = 0
@@ -41,6 +41,7 @@ class Levels():
 
         # Score Board
         self.score_value = 0
+        self.currentScore = 0
         self.level_complete_value = 0
         self.font = pygame.font.Font("./fonts/Square.ttf", 24)
         self.textX = 10
@@ -168,6 +169,7 @@ class Levels():
     # Configures the level
     def initLevel(self, level):
         self.playerImg = pygame.image.load(data['levels'][level]['playerImg'])
+        self.bulletImg = pygame.image.load(data['levels'][level]['bulletImg'])
         self.bullet_sound = pygame.mixer.Sound(
             data['levels'][level]['bulletSound'])
         self.background = pygame.image.load(
@@ -226,6 +228,7 @@ class Levels():
         self.screen.blit(try_again, (110, 360))
         
 
+    #Game Loop for Level 1
     def level1(self):
         if (self.initLevelFlag == True):
             # Set up level
@@ -260,6 +263,7 @@ class Levels():
                     if event.key == pygame.K_SPACE:
                         self.gameOverFlag = False
                         self.score_value = 0
+                        self.initLevelFlag = True
                         self.level1()
 
         # Screen Attributes
@@ -327,8 +331,10 @@ class Levels():
             self.level_counter += 1
             self.score_value += self.level_complete_value
             self.currentStage = False
+            self.currentScore = self.score_value
                        
 
+    #Game Loop for Level 2
     def level2(self):
         if (self.initLevelFlag == True):
             # Set up level
@@ -362,8 +368,9 @@ class Levels():
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
                         self.gameOverFlag = False
-                        self.score_value = 0
-                        self.level1()
+                        self.score_value = self.currentScore
+                        self.initLevelFlag = True
+                        self.level2()
 
         # Screen Attributes
         self.screen.fill((0, 0, 0))
@@ -416,13 +423,13 @@ class Levels():
             self.bullet_state = "ready"
 
         if self.bullet_state == "fire":
-            self.fire_bullet(self.bulletX, self.bulletY)
+            self.fire_bullet(self.bulletX + 23, self.bulletY)
             self.bulletY -= self.bulletY_change
 
         self.player(self.playerX, self.playerY)
         self.show_score(self.textX, self.textY)
         
-        if (self.score_value >= 50):
+        if (self.score_value >= 20):
             victory_sound = pygame.mixer.Sound("./media/victory.wav")
             victory_sound.play()  
             self.lvState = "level3"
@@ -430,7 +437,9 @@ class Levels():
             self.currentStage = False
             self.level_counter += 1
             self.score_value += self.level_complete_value 
+            self.currentScore = self.score_value
             
+    #Game Loop for Level 3
     def level3(self):
         if (self.initLevelFlag == True):
             # Set up level
@@ -464,8 +473,9 @@ class Levels():
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
                         self.gameOverFlag = False
-                        self.score_value = 0
-                        self.level1()
+                        self.score_value = self.currentScore
+                        self.initLevelFlag = True
+                        self.level3()
 
         # Screen Attributes
         self.screen.fill((0, 0, 0))
@@ -518,13 +528,13 @@ class Levels():
             self.bullet_state = "ready"
 
         if self.bullet_state == "fire":
-            self.fire_bullet(self.bulletX, self.bulletY)
+            self.fire_bullet(self.bulletX + 23, self.bulletY)
             self.bulletY -= self.bulletY_change
 
         self.player(self.playerX, self.playerY)
         self.show_score(self.textX, self.textY)
         
-        if (self.score_value >= 100):
+        if (self.score_value >= 40):
             victory_sound = pygame.mixer.Sound("./media/victory.wav")
             victory_sound.play()  
             self.lvState = "level4"
@@ -532,8 +542,10 @@ class Levels():
             self.currentStage = False
             self.level_counter += 1
             self.score_value += self.level_complete_value
+            self.currentScore = self.score_value
             
 
+    #Game Loop for Level 4
     def level4(self):
         if (self.initLevelFlag == True):
             # Set up level
@@ -567,8 +579,9 @@ class Levels():
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
                         self.gameOverFlag = False
-                        self.score_value = 0
-                        self.level1()
+                        self.score_value = self.currentScore
+                        self.initLevelFlag = True
+                        self.level4()
 
         # Screen Attributes
         self.screen.fill((0, 0, 0))
