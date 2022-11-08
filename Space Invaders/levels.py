@@ -46,17 +46,23 @@ class Levels():
         self.font = pygame.font.Font("./fonts/Square.ttf", 24)
         self.textX = 10
         self.textY = 10
+        self.level_counter = 1
+
+        #Welcome Screen and Stage Screen Font
+        self.main_text_font = pygame.font.Font("./fonts/Square.ttf", 128)
+        self.stage_text_font = pygame.font.Font('./fonts/Square.ttf', 50)
+        self.game_text_font = pygame.font.Font("./fonts/Square.ttf", 24)
 
         # Game Over Text
         # create the font for game over
         self.game_over_font = pygame.font.Font("./fonts/Square.ttf", 128)
         self.try_again_font = pygame.font.Font("./fonts/Square.ttf", 50)
-        self.stage_level_font = pygame.font.Font("./fonts/Square.ttf", 128)
 
         # flags
         self.gameOverFlag = False
         self.initLevelFlag = True
         self.running = True
+        self.currentStage = False
 
         # Background stuff
         self.background = pygame.image.load("./media/stars.png")
@@ -72,13 +78,19 @@ class Levels():
     # Returns whether the game is still running or not
     def isRunning(self):
         return self.running
+    
+    def isOnCurrentStage(self):
+        return self.currentStage
+
+    def stageScreen(self):
+        self.screen.fill((0, 0, 0))
+        self.screen.blit(self.background, (0, 0))
+        stage_level = self.stage_text_font.render("LEVEL " + str(self.level_counter), True, (255, 255, 255))
+        self.screen.blit(stage_level, (300, 300))
 
     # Configures the level
     def initLevel(self, level):
-        stage_level = self.stage_level_font.render("LEVEL " + str(level), True, (255, 255, 255))
-        self.screen.blit(stage_level, (300, 300))
         
-
         self.playerImg = pygame.image.load(data['levels'][level]['playerImg'])
         self.bullet_sound = pygame.mixer.Sound(
             data['levels'][level]['bulletSound'])
@@ -108,6 +120,8 @@ class Levels():
         score = self.font.render(
             "Score: "+str(self.score_value), True, (255, 255, 255))
         self.screen.blit(score, (x, y))
+        stage_level = self.game_text_font.render("LEVEL " + str(self.level_counter), True, (255, 255, 255))
+        self.screen.blit(stage_level, (x, y + 30))
 
     def player(self, x, y):
         self.screen.blit(self.playerImg, (x, y))
@@ -139,15 +153,15 @@ class Levels():
 
     def level1(self):
 
-        
         if (self.initLevelFlag == True):
             # Set up level
-            self.initLevel("1")
+            self.initLevel(str(self.level_counter))
             self.initLevelFlag = False
-            
+        
 
         # Game Events
         for event in pygame.event.get():
+
 
             if event.type == pygame.QUIT:
                 self.running = False
@@ -173,6 +187,7 @@ class Levels():
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
                         self.gameOverFlag = False
+                        self.currentStage = False
                         self.score_value = 0
                         self.level1()
 
@@ -233,17 +248,19 @@ class Levels():
         self.player(self.playerX, self.playerY)
         self.show_score(self.textX, self.textY)
 
-        if (self.score_value == 5):
+        if (self.score_value == 2):
             self.lvState = "level2"
             self.initLevelFlag = True
             self.score_value += self.level_complete_value
+            self.level_counter += 1
+            self.currentStage = False
 
     def level2(self):
 
 
         if (self.initLevelFlag == True):
             # Set up level
-            self.initLevel("2")
+            self.initLevel(str(self.level_counter))
             self.initLevelFlag = False
 
         # Game Events
@@ -273,6 +290,7 @@ class Levels():
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
                         self.gameOverFlag = False
+                        self.currentStage = False
                         self.score_value = 0
                         self.level1()
 
